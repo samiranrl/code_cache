@@ -1,11 +1,15 @@
 # Optional Prerequisites
-sudo apt install python3-pip
+
+alias python=python3
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+pip install jupyter
 
 # Jupyter install
 
 
 
-pip3 install jupyter
+
 ipython
 from IPython.lib import passwd
 passwd()
