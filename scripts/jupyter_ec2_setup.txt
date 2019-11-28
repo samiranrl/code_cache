@@ -1,4 +1,11 @@
-pip install jupyter
+# Optional Prerequisites
+sudo apt install python3-pip
+
+# Jupyter install
+
+
+
+pip3 install jupyter
 ipython
 from IPython.lib import passwd
 passwd()
