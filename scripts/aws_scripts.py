@@ -35,3 +35,31 @@ config = {
         "AWS_SECRET_KEY_ID" : "some secret key",
         "AWS_REGION" : "us-west-2"
 }
+
+
+
+# boto basic instance management
+
+
+import boto3
+ 
+ids = ['instance_id']
+ec2 = boto3.resource('ec2', aws_access_key_id=config['AWS_ACCESS_KEY_ID'], aws_secret_access_key=config['AWS_SECRET_KEY_ID'], region_name='ap-south-1')
+
+
+try:
+    print(ec2.instances.filter(InstanceIds = ids).stop()) # stop ec2
+except Exception as e:
+    print(e)
+
+try:
+    print(ec2.instances.filter(InstanceIds = ids).start()) # start ec2
+except Exception as e:
+    print(e)
+    
+for instance in ec2.instances.filter(InstanceIds = ids):
+    print (instance.state) # check current state
+
+for instance in ec2.instances.filter(InstanceIds = ids): # ssh script
+    print ()
+    print('ssh -i "sam_tildehat.pem" ubuntu@ec2-' + instance.public_ip_address.replace(".", "-") +'.ap-south-1.compute.amazonaws.com')
