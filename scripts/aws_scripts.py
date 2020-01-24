@@ -62,4 +62,4 @@ for instance in ec2.instances.filter(InstanceIds = ids):
 
 for instance in ec2.instances.filter(InstanceIds = ids): # ssh script
     print ()
-    print('ssh -i "sam_tildehat.pem" ubuntu@ec2-' + instance.public_ip_address.replace(".", "-") +'.ap-south-1.compute.amazonaws.com')
+    print('ssh -i "key.pem" ubuntu@ec2-' + instance.public_ip_address.replace(".", "-") +'.ap-south-1.compute.amazonaws.com')
