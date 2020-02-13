@@ -33,4 +33,6 @@ c.NotebookApp.password = u'sha1:262....your hash here.........65f'  #edit this w
 # This is the port we opened in Step 3.
 c.NotebookApp.port = 8888
 
+# if the nb does not connect, check appropriate permission for certificate.pem file
+
 sudo jupyter-notebook --allow-root --open_browser=False --ip="0.0.0.0"
