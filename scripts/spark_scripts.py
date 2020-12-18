@@ -78,6 +78,9 @@ student_subject = df.groupby(['student_id', 'subject_id']).agg(func.avg("grade")
 
 user_merchant.write.mode('overwrite').option("delimiter","|").option("header", "false").csv('s3://s3yodlee/samiran/lightroom/data_swimming/user_merchant/')
 
+# write data as json
+
+data.write.format('json').save("s3://file_path.json")
 
 ### Simple EMR functions
 
