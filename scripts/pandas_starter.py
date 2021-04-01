@@ -2,8 +2,8 @@
 import pandas as pd
 import numpy as np
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', 200)
+pd.set_option('display.max_columns', 50)
+pd.set_option('display.min_rows', 100)
 pd.set_option('display.max_colwidth', -1)
 
 from tqdm import tqdm
