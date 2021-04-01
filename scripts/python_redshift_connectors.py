@@ -27,3 +27,9 @@ with engine.connect() as conn, conn.begin():
     print (query_total_count)
     df = pd.read_sql(query_total_count, conn) # Query results in a dataframe
 print("--- %s seconds ---" % (time.time() - start_time))
+
+
+# Explicity rollback a transaction
+cur = con.cursor()
+cur.execute("ROLLBACK")
+con.commit()
