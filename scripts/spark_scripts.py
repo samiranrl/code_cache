@@ -171,3 +171,22 @@ descriptions = df.select(["text_field"])
 wc = descriptions.withColumn('word', func.explode(func.split(func.col('text_field'), ' '))).groupBy('word').count().filter(func.col('count')>importance_threshold).toPandas()
 wc = pd.Series(wc['count'].values,index=wc.word).to_dict()
 
+
+
+# Use Spark to query Redshift
+
+%%configure -f 
+{
+    "jars": ["s3://path/RedshiftJDBC42-no-awssdk-1.2.47.1071.jar"]
+}
+
+def run_redshift_query_and_return_df(query):
+    query_result_df = spark.read \
+      .format("jdbc") \
+      .option("driver","com.amazon.redshift.jdbc42.Driver") \
+      .option("url", "jdbc:redshift://url.redshift.amazonaws.com:5439/dp?user=user&password=pass") \
+      .option("query", query) \
+      .load()
+    return query_result_df
+
+
